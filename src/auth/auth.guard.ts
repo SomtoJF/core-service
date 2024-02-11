@@ -10,6 +10,7 @@ import { Request } from 'express';
 import { ConfigService } from '@nestjs/config';
 import { Reflector } from '@nestjs/core';
 import { IS_PUBLIC_KEY } from 'src/decorators/public';
+import { GqlExecutionContext } from '@nestjs/graphql';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -29,7 +30,10 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    const request = context.switchToHttp().getRequest();
+    const gqlCtx = GqlExecutionContext.create(context);
+    const ctx = gqlCtx.getContext();
+
+    const request = ctx.req;
     const token = this.extractTokenFromHeader(request);
     if (!token) {
       throw new UnauthorizedException();
