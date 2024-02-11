@@ -8,6 +8,14 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export class UpdateUserArgs {
+    email?: Nullable<string>;
+    password?: Nullable<string>;
+    firstName?: Nullable<string>;
+    lastName?: Nullable<string>;
+    profilePicture?: Nullable<string>;
+}
+
 export class User {
     __typename?: 'User';
     id: string;
@@ -17,8 +25,14 @@ export class User {
     lastName: string;
     profilePicture?: Nullable<string>;
     role: string;
-    examsTaken?: Nullable<string[]>;
-    examsSet?: Nullable<string[]>;
+    examsTakenId?: Nullable<string[]>;
+    examsSetId?: Nullable<string[]>;
+}
+
+export abstract class IMutation {
+    __typename?: 'IMutation';
+    updateUser?: Nullable<User>;
+    deleteUser?: Nullable<User>;
 }
 
 export abstract class IQuery {

@@ -7,10 +7,23 @@ type User {
   lastName: String!
   profilePicture: String
   role: String!
-  examsTaken: [String!]
-  examsSet: [String!]
+  examsTakenId: [String!]
+  examsSetId: [String!]
   #   createdAt:
   #   updatedAt:
+}
+
+input UpdateUserArgs {
+  email: String
+  password: String
+  firstName: String
+  lastName: String
+  profilePicture: String
+}
+
+type Mutation {
+  updateUser(id: ID!, args: UpdateUserArgs!): User
+  deleteUser(id: ID!): User
 }
 
 type Query {
