@@ -12,9 +12,6 @@ datasource db {
 
 model User{
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
   email String @unique
   hash String 
   firstName String 
@@ -24,5 +21,32 @@ model User{
   examsTakenId String[]
   examsSetId String[]
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   @@map("users")
+}
+
+model Exam{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  examinerId String @db.ObjectId
+  candidatesId String[] @db.ObjectId
+  objectiveQuestions ObjQuestion[]
+  theoryQuestions TheoryQuestion[]
+  due DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("exams")
+}
+
+type ObjQuestion{
+  question String
+  options String[]
+  answer Int
+}
+
+type TheoryQuestion{
+  question String
+  answers String[]
 }
