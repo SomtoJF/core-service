@@ -1,0 +1,54 @@
+scalar Date
+
+type Exam {
+  id: ID!
+  name: String!
+  examinerId: ID!
+  examiner: User!
+  candidates: [User!]
+  candidatesId: [ID!]
+  objectiveQuestions: [ObjQuestion!]
+  theoryQuestions: [TheoryQuestion!]
+  due: Date!
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type ObjQuestion {
+  question: String!
+  options: [String!]!
+  answer: Int!
+}
+
+type TheoryQuestion {
+  question: String!
+  answers: [String!]!
+}
+
+input ObjInput {
+  question: String!
+  options: [String!]!
+  answer: Int!
+}
+
+input TheoryInput {
+  question: String!
+  answers: [String!]!
+}
+
+input CreateExamArgs {
+  name: String!
+  examinerId: ID!
+  objectiveQuestions: [ObjInput!]
+  theoryQuestions: [TheoryInput!]
+  due: Date!
+}
+
+type Mutation {
+  createExam(args: CreateExamArgs!): Exam
+  deleteExam(id: ID!): Exam
+}
+
+type Query {
+  exam(id: ID!): Exam
+}
