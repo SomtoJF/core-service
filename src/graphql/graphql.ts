@@ -88,8 +88,8 @@ export class User {
     examsTaken?: Nullable<Exam[]>;
     examsSetId?: Nullable<string[]>;
     examsSet?: Nullable<Exam[]>;
-    createdAt?: Nullable<DateTimeISO>;
-    updatedAt?: Nullable<DateTimeISO>;
+    createdAt: DateTimeISO;
+    updatedAt: DateTimeISO;
 }
 
 export type DateTimeISO = any;
