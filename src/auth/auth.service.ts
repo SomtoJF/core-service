@@ -31,6 +31,8 @@ export class AuthService {
       throw new UnauthorizedException('Email or Password is Incorrect');
     }
 
+    delete user.hash;
+
     // TODO: Generate a JWT and return it here
     // instead of the user object
     const payload = {
@@ -42,6 +44,7 @@ export class AuthService {
     };
 
     return {
+      user: user,
       access_token: await this.jwtService.signAsync(payload, {
         expiresIn: '2h',
         secret: this.config.get('JWT_SECRET'),
