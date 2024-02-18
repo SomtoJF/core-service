@@ -10,7 +10,6 @@ export class UsersResolver {
   @Query()
   async user(@Args() { id }: userIdDto) {
     const response = await this.prisma.user.findUnique({ where: { id: id } });
-    delete response.hash;
     return response;
   }
 
@@ -19,14 +18,6 @@ export class UsersResolver {
     @Args() { id }: userIdDto,
     @Args('args') args: updateUserArgsDto,
   ) {
-    // if password, hash it
-    if (args.password) {
-      const password = args.password;
-      const hash = await argon.hash(password);
-      args = { ...args, hash };
-      delete args.password;
-    }
-
     return this.prisma.user.update({ where: { id: id }, data: { ...args } });
   }
 

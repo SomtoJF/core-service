@@ -12,13 +12,13 @@ export class LoginDto {
 }
 
 export class SignupDto {
+  @IsString()
+  @IsNotEmpty()
+  id: string;
+
   @IsEmail()
   @IsNotEmpty()
   email: string;
-
-  @IsString()
-  @IsNotEmpty()
-  password: string;
 
   @IsString()
   @IsNotEmpty()
