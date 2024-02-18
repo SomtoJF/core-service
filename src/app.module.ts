@@ -7,9 +7,9 @@ import { AppController } from './app.controller';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     UserModule,
     PrismaModule,
-    ConfigModule.forRoot({ isGlobal: true }),
     GraphqlModule,
   ],
   controllers: [AppController],
