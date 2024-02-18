@@ -1,7 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../../prisma/prisma.service';
 import { updateUserArgsDto, userIdDto } from './dto';
-import * as argon from 'argon2';
 
 @Resolver('User')
 export class UsersResolver {
