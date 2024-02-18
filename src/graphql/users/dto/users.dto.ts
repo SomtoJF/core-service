@@ -20,15 +20,6 @@ export class updateUserArgsDto {
 
   @IsString()
   @IsOptional()
-  password: string;
-
-  @IsString()
-  @IsOptional()
-  @IsEmpty()
-  hash: string;
-
-  @IsString()
-  @IsOptional()
   firstName: string;
 
   @IsString()

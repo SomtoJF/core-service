@@ -29,7 +29,6 @@ export class CreateExamArgs {
 
 export class UpdateUserArgs {
     email?: Nullable<string>;
-    password?: Nullable<string>;
     firstName?: Nullable<string>;
     lastName?: Nullable<string>;
     profilePicture?: Nullable<string>;
@@ -79,7 +78,6 @@ export abstract class IQuery {
 export class User {
     id: string;
     email: string;
-    hash: string;
     firstName: string;
     lastName: string;
     profilePicture?: Nullable<string>;
