@@ -1,19 +1,13 @@
-import {
-  Injectable,
-  UnauthorizedException,
-  ForbiddenException,
-} from '@nestjs/common';
-import { SignupDto } from './dto';
+import { Injectable, ForbiddenException } from '@nestjs/common';
+import { CreateUserDto } from './dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
-export class AuthService {
+export class UserService {
   constructor(private prisma: PrismaService) {}
 
-  async signup(dto: SignupDto) {
+  async createUser(dto: CreateUserDto) {
     try {
       const response = await this.prisma.user.create({ data: dto });
 
