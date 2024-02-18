@@ -4,6 +4,6 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "assets": [{ "include": "**/*.graphql", "watchAssets": true }]
+    "assets": [{ "include": "./**/*.graphql", "watchAssets": true }]
   }
 }
